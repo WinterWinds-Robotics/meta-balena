@@ -101,6 +101,7 @@ BALENA_CONFIGS ?= " \
     uprobes \
     task-accounting \
     ipv6_mroute \
+    mdraid \
     "
 
 #
@@ -564,6 +565,14 @@ BALENA_CONFIGS[ad5446] = " \
 # enable user space probes support
 BALENA_CONFIGS[uprobes] = " \
     CONFIG_UPROBE_EVENTS=y \
+"
+
+# enable rootfs on RAID1
+RESIN_CONFIGS[mdraid] = " \
+    CONFIG_MD=y \
+    CONFIG_BLK_DEV_MD=y \
+    CONFIG_MD_RAID1=y \
+    CONFIG_MD_AUTODETECT=y \
 "
 
 ###########
