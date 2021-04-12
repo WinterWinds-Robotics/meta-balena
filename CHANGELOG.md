@@ -1,6 +1,69 @@
 Change log
 -----------
 
+# v2.74.0
+## (2021-04-12)
+
+* Add support for rootfs on MD RAID1 [Michal Toman]
+
+# v2.73.5
+## (2021-04-06)
+
+* Update balena-supervisor from v12.4.6 to v12.5.6 [Christina Wang]
+
+# v2.73.4
+## (2021-03-20)
+
+* Add to persistent logging defn [Andrew Nhem]
+
+# v2.73.3
+## (2021-03-19)
+
+* wifi: remove listed example as it's discontinued [Tomás Migone]
+
+# v2.73.2
+## (2021-03-17)
+
+* hostapp-update: convert absolute symlinks to relative [Joseph Kogut]
+
+# v2.73.1
+## (2021-03-16)
+
+* Update balena-supervisor from v12.3.5 to v12.4.6 [Felipe Lalanne]
+
+# v2.73.0
+## (2021-03-15)
+
+* image_types_balena: make rootfs labeling generic [Joseph Kogut]
+* image_types_balena: make agnostic to root fstype [Joseph Kogut]
+* mkfs-hostapp-native: make agnostic to fstype [Joseph Kogut]
+
+# v2.72.2
+## (2021-03-15)
+
+* balena: dissolve healthcheck-image-load into healthcheck script [Robert Günzler]
+
+# v2.72.1
+## (2021-03-11)
+
+* Fix disablement of userspace firmware loading requests [Pelle van Gils]
+
+# v2.72.0
+## (2021-03-10)
+
+
+<details>
+<summary> os-config: Update os-config from v1.1.4 to v1.2.0 [Kyle Harding] </summary>
+
+> ## os-config-1.2.0
+> ### (2021-02-23)
+> 
+> * os-config: rename flasher flag path [Kyle Harding]
+> 
+</details>
+
+* Rename resin image types to balena [Kyle Harding]
+
 # v2.71.7
 ## (2021-03-08)
 
