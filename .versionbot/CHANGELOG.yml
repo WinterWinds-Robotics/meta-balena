@@ -1,4 +1,20 @@
 - commits:
+    - subject: Add support for rootfs on MD RAID1
+      hash: 7b91db57fe70a081ef2a1990e8fcc2e4b952a2c0
+      body: |
+        This commit does two things:
+        - Build in necessary kernel modules
+        - Add the mdadm userspace utility to rootfs and initrd
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 2.74.0
+  date: 2021-04-12T11:58:08.049Z
+- commits:
     - subject: Update balena-supervisor from v12.4.6 to v12.5.6
       hash: 6852b3704575ce5535082e2c02a7f2c6f57e1df4
       body: ''
