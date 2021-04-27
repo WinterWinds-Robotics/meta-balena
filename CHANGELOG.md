@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.75.1
+## (2021-04-27)
+
+* balena-config-vars: improve handling of NM config parameters [Mark Corbin]
+
 # v2.75.0
 ## (2021-04-22)
 

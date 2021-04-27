@@ -1,4 +1,40 @@
 - commits:
+    - subject: 'balena-config-vars: improve handling of NM config parameters'
+      hash: c842a74c807000828c7e3129371716e35c49e78e
+      body: |
+        Improve the handling of the os.network.* parameters defined in
+        config.json.
+
+        The balena-config-vars script has been updated to process the
+        os.network.* parameters from config.json. This allows scripts
+        to access these parameters by just including balena-config-vars
+        rather than having to parse them directly. Some of the default
+        settings have now been included as part of the jq parsing string.
+        The jq command has also been assigned to an interim variable rather
+        than being evaluated directly. This allows other scripts which
+        include balena-config-vars to handle parsing errors correctly when
+        they are running with 'set -e'.
+
+        The os-networkmanager script has been updated to make use of the
+        balena-config-vars script and no longer parses config.json itself.
+        The logging has been standardised and the simplification of the
+        variable processing has reduced the size of the script from 146
+        to 101 lines.
+
+        The build time tests have been removed as the os-networkmanager script
+        is unable to access /usr/sbin/balena-config-vars at buildtime.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: 'balena-config-vars: improve handling of NM config parameters'
+        changelog-entry: 'balena-config-vars: improve handling of NM config parameters'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.75.1
+  date: 2021-04-27T12:38:47.544Z
+- commits:
     - subject: Update mobynit to the new multi-container hostOS specification
       hash: 93335381320815dbe7b2d21233106910a200e2f5
       body: |
