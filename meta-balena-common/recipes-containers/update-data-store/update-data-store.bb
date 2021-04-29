@@ -14,6 +14,7 @@ FILES_${PN} = "${bindir}"
 RDEPENDS_${PN} = " \
     balena \
     bash \
+    os-helpers-api \
     "
 
 do_install() {

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+BALENA_HOSTOS_BLOCK_CLASS="io.balena.image.class"
+BALENA_HOSTOS_BLOCK_STORE="io.balena.image.store"
+BALENA_HOSTOS_BLOCK_REQUIRES_REBOOT="io.balena.image.requires-reboot"
+BALENA_HOSTOS_APP_UUID="io.balena.app-uuid"
+BALENA_HOSTOS_APP_ID="io.balena.app-id"
+BALENA_HOSTOS_RELEASE_VERSION="io.balena.release-version"
+BALENA_HOSTOS_SERVICE_NAME="io.balena.service-name"
+
+os_helpers_fetch_target_state() {
+	local _device_uuid="$1"
+	local _api_env="$2"
+	local _token="$3"
+	local _target_state_json
+	_target_state_json=$(curl --silent --header "Authorization: Bearer ${_token}" --header "User-Agent:" --compressed "${_api_env}/v6/supervisor_release?\$select=supervisor_version,image_name&\$filter=should_manage__device/any(d:d/uuid%20eq%20'${_device_uuid}')" | jq -e -r '.d[0].supervisor_version,.d[0].image_name')
+	echo "${_target_state_json}" | tr "\n" " "
+}
+
+os_helpers_imageid_from_digest() {
+        local _image="$1"
+        local _digest
+        local _image_name
+        local _imageid
+        local _digest_check
+        _image_name=$(echo "${_image}" | cut -d "@" -f1)
+        _digest=$(echo "${_image}" | cut -d "@" -f2)
+        _imageid=$(balena images --filter=reference="${_image_name}" --format "{{.ID}}")
+        _digest_check=$(balena images --digests --filter=reference="${_image_name}" --format "{{.Digest}}")
+        if [ "${_digest}" == "${_digest_check}" ]; then
+                echo "${_imageid}"
+        fi
+}
