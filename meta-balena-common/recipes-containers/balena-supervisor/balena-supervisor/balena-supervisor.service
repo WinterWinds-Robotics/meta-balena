@@ -23,10 +23,10 @@ WatchdogSec=180
 SyslogIdentifier=balena-supervisor
 EnvironmentFile=/etc/balena-supervisor/supervisor.conf
 EnvironmentFile=-/tmp/update-supervisor.conf
-ExecStartPre=-@BINDIR@/balena stop resin_supervisor
+ExecStartPre=-@BINDIR@/balena stop balena_supervisor
 ExecStartPre=/bin/systemctl is-active balena.service
 ExecStart=/usr/bin/healthdog --healthcheck=/usr/lib/balena-supervisor/balena-supervisor-healthcheck @BINDIR@/start-balena-supervisor
-ExecStop=-@BINDIR@/balena stop resin_supervisor
+ExecStop=-@BINDIR@/balena stop balena_supervisor
 
 [Install]
 WantedBy=multi-user.target

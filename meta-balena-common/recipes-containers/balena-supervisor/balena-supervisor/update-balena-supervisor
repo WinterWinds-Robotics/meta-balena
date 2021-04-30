@@ -3,7 +3,7 @@
 set -o pipefail
 
 # Help function
-update_resin_supervisor_help() {
+update_balena_supervisor_help() {
     cat << EOF
 Wrapper to run supervisor agent updates on balena distributions.
 $0 <OPTION>
@@ -30,7 +30,7 @@ while [ $# -gt 0 ]; do
 
     case $arg in
         -h|--help)
-            update_resin_supervisor_help
+            update_balena_supervisor_help
             exit 0
             ;;
         -i|--supervisor-image)
@@ -158,7 +158,7 @@ fi
 # Pull target version.
 echo "Pulling supervisor $image_name:$tag..."
 if $DOCKER pull "$image_name:$tag"; then
-    $DOCKER rm --force resin_supervisor || true
+    $DOCKER rm --force balena_supervisor || true
 else
     error_handler "supervisor pull failed"
 fi
