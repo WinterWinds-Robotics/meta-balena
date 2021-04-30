@@ -209,6 +209,7 @@ const doHUP = async (that, mode, hostapp, target) => { // {{{2
             );
         }
         that.log(`Running: hostapp-update -f ${hostapp}`);
+        // TODO do we need to print the output here?
         that.log(await that.context.get().worker.executeCommandInHostOS(
             `hostapp-update -f ${hostapp}`,
             target,
@@ -217,6 +218,7 @@ const doHUP = async (that, mode, hostapp, target) => { // {{{2
 
       case 'image':
         that.log(`Running: hostapp-update -i ${hostapp}`);
+        // TODO do we need to print the output here?
         that.log(await that.context.get().worker.executeCommandInHostOS(
             `hostapp-update -i ${hostapp}`,
             target,
@@ -298,6 +300,40 @@ const initDUT = async (that, target) => { // {{{2
       target,
     );
 } // 2}}}
+
+const diagnoseFailure = async (that, target) => { // {{{{2
+  that.log(`=== HUP Failure Diagnosis ===`);
+
+  const hupLogs = await that.context
+    .get()
+    .worker.executeCommandInHostOS(
+      `set -x; find /mnt/data/*hup/*log -mtime -180 | xargs tail -n 250 -v`,
+      target,
+    );
+  that.log(`== HUP logs ==\n${hupLogs}`);
+
+  that.log(await that.context.get().worker.executeCommandInHostOS(
+      `set -x; df -h;`,
+      target,
+    ));
+
+  const boots = await that.context
+    .get()
+    .worker.executeCommandInHostOS(
+      `set -x; journalctl --no-pager --no-hostname  --list-boots`,
+      target,
+    );
+  that.log(`== Boots ==\n${boots}`);
+
+  const journalLogs = await that.context
+    .get()
+    .worker.executeCommandInHostOS(
+      `journalctl --no-pager --no-hostname --list-boots | awk '{print $1}' | xargs -I{} sh -c 'set -x; journalctl --no-pager --no-hostname -n500 -a -b {};'`,
+      target,
+    );
+  that.log(`== Journal logs ==\n${journalLogs}`);
+  that.log(`=== HUP Failure Diagnosis END ===`);
+} // 2}}}}
 // }}}
 
 module.exports = {
@@ -369,6 +405,7 @@ module.exports = {
         getOSVersion: getOSVersion,
         initDUT: initDUT,
         runRegistry: runRegistry,
+        diagnose: diagnoseFailure,
       },
     });
 
