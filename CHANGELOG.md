@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.75.2
+## (2021-04-30)
+
+* tests: Add hup test suite [Robert Günzler]
+
 # v2.75.1
 ## (2021-04-29)
 

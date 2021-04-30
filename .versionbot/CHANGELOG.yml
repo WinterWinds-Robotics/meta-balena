@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'tests: Add hup test suite'
+      hash: 4956324afe31b197a73275bf26e41556a65a3ee0
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Robert Günzler <robertg@balena.io>
+        signed-off-by: Robert Günzler <robertg@balena.io>
+      author: Robert Günzler
+      nested: []
+  version: 2.75.2
+  date: 2021-04-30T13:37:45.373Z
+- commits:
     - subject: 'grub: grub-efi: buildin gzio for gz compressed kernels'
       hash: 6e0dd4407077d66fa9a0ac16b38a83f6cd46e9b2
       body: ''
