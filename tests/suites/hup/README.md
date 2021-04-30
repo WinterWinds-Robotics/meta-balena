@@ -13,3 +13,19 @@ Test the transition between balenaOS releases via the `hostapp-update` mechanism
 	3. Run `hostapp-update -i <testbot>:5000/hostapp`
 	4. Wait for the DUT to come back online
 	5. _do test case specific stuff to check_
+
+
+## current tests
+
+* [smoke test](./tests/smoke.js): simply do a HUP and print before and after OS versions
+
+* [storage migration](./tests/storagemigration.js): check aufs to overlayfs migration
+  * [x] do migration
+  * [x] skip migration
+  * [ ] fail migration
+
+## TODO
+
+* [self-serve-dashboard](./tests/self-serve-dashboard.js)
+* [rollback-altboot](./tests/rollback-altboot.js)
+* [rollback-health](./tests/rollback-health.js)
