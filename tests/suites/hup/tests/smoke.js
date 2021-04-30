@@ -16,7 +16,12 @@ module.exports = {
       this, this.context.get().link);
     this.log(`VERSION: ${before}`);
 
-    await this.context.get().hup.doHUP(this, 'image', this.context.get().hup.payload, this.context.get().link);
+    try {
+      await this.context.get().hup.doHUP(this, 'image', this.context.get().hup.payload, this.context.get().link);
+    } catch (e) {
+      await this.context.get().hup.diagnose(this, this.context.get().link);
+      throw e;
+    }
 
     const after = await this.context.get().hup.getOSVersion(
       this, this.context.get().link);

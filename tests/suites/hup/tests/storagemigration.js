@@ -24,39 +24,6 @@ const shouldMigrate = async (that) => { // {{{
   }
   return true;
 } // }}}
-
-const errorReport = async (that) => { // {{{
-  that.log(`HUP failed`);
-
-  const hupLogs = await that.context
-    .get()
-    .worker.executeCommandInHostOS(
-      `set -x; find /mnt/data/*hup/*log -mtime -180 | xargs tail -n 250 -v`,
-      that.context.get().link,
-    );
-  that.log(`HUP logs: ${hupLogs}`);
-
-  that.log(await that.context.get().worker.executeCommandInHostOS(
-      `set -x; df -h;`,
-      that.context.get().link,
-    ));
-
-  const boots = await that.context
-    .get()
-    .worker.executeCommandInHostOS(
-      `set -x; journalctl --no-pager --no-hostname  --list-boots`,
-      that.context.get().link,
-    );
-  that.log(`Boots: ${boots}`);
-
-  const journalLogs = await that.context
-    .get()
-    .worker.executeCommandInHostOS(
-      `journalctl --no-pager --no-hostname  --list-boots | awk '{print $1}' | xargs -I{} sh -c 'set -x; journalctl --no-pager --no-hostname -n500 -a -b {};'`,
-      that.context.get().link,
-    );
-  that.log(`Journal logs: ${journalLogs}`);
-}
 // }}}
 
 module.exports = {
@@ -106,7 +73,7 @@ module.exports = {
           this.log("Migration successful");
 
         } catch (e) {
-          await errorReport(this);
+          await this.context.get().hup.diagnose(this, this.context.get().link);
           throw e;
         }
       } // }}}
@@ -146,7 +113,7 @@ module.exports = {
           this.log(`Engine logs: ${migrationLogs}`);
 
         } catch (e) {
-          await errorReport(this);
+          await this.context.get().hup.diagnose(this, this.context.get().link);
           throw e;
         }
       } // }}}
