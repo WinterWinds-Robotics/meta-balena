@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.77.0
+## (2021-05-03)
+
+* docs: Document multi-container hostOS [Alex Gonzalez]
+* Add version and service name labels to supervisor container [Alex Gonzalez]
+* The supervisor now updates from Balena's registry [Alex Gonzalez]
+* Add a os-helper-api target script library [Alex Gonzalez]
+* package-group-resin: Replace hostapp-extensions-update [Alex Gonzalez]
+* Add update-data-store to replace update-hostapp-extensions [Alex Gonzalez]
+* resin-device-register: Use supervisor version label instead of tag [Alex Gonzalez]
+* docker-disk: Allow to define a custom CA [Alex Gonzalez]
+* Install data store images [Alex Gonzalez]
+* Revert "docker-disk: Add the host extension images to the data partition" [Alex Gonzalez]
+* Revert "resin-vars: Parse the HOSTEXT_IMAGES variable from config.json" [Alex Gonzalez]
+
 # v2.76.0
 ## (2021-04-30)
 

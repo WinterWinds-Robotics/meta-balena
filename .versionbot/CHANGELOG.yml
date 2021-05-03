@@ -1,4 +1,164 @@
 - commits:
+    - subject: 'docs: Document multi-container hostOS'
+      hash: 172666c992f9f4a17560fdb7e5b2f118ab269cce
+      body: |
+        BalenaOS is a multi-container application that is composed of blocks
+        images. Add some brief architectural related notes.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Add version and service name labels to supervisor container
+      hash: 25101fd01e59203014a6fd10cfddd3a9431d9d93
+      body: |
+        The supervisor requires containers to be labeled with the app UUID and
+        the service name to handle them correctly.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Add version and service name labels to supervisor container
+        changelog-entry: Add version and service name labels to supervisor container
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: The supervisor now updates from Balena's registry
+      hash: 330cf559a63d23cf3cc09599ef1b0cbac3c0b015
+      body: |
+        The supervisor is now pulled as any other extra container from an app
+        using the balenaCloud registry.
+
+        This commit adjusts the update and start scripts removing the variables
+        related to dockerhub installation.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Changelog-entry: The supervisor now updates from Balena's registry
+        changelog-entry: The supervisor now updates from Balena's registry
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Add a os-helper-api target script library
+      hash: 2b2c2e156b38967c209b5876b4a063c5675212a6
+      body: |
+        The update scripts need to share some common API related code.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Add a os-helper-api target script library
+        changelog-entry: Add a os-helper-api target script library
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'package-group-resin: Replace hostapp-extensions-update'
+      hash: a892c57f711a4116ee58dbce64170118500581df
+      body: |
+        The script is now called update-data-store to reflect architectural
+        design changes.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Add update-data-store to replace update-hostapp-extensions
+      hash: 6d558ed37c6d226ef57a6933b475a2a1f509610c
+      body: |
+        This script is now called by the supervisor with the target state.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Add update-data-store to replace update-hostapp-extensions
+        changelog-entry: Add update-data-store to replace update-hostapp-extensions
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'resin-device-register: Use supervisor version label instead of tag'
+      hash: 9f0b9e91960daee08054c8effb73086c4cff8a9e
+      body: >
+        This is just a name change that reflects the wider change that the
+
+        supervisor is no longer fetched from dockerhub but from Balena's
+        registry.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'docker-disk: Allow to define a custom CA'
+      hash: d68a94a4e69d594f8debd839d865b8b7a0756fc9
+      body: |
+        When building images against openBalena a custom CA needs to be used so
+        secure API calls are possible.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Install data store images
+      hash: defcd3d2f308c957cce018c9fc95812b68b6f15d
+      body: |
+        Handle the installation of hostOS images with a target store in the data
+        partition as specified in the hostOS app.
+
+        Also, create an apps.json file that defines the preloaded default state
+        of the system
+      footer:
+        Change-type: minor
+        change-type: minor
+        Changelog-entry: Install data store images
+        changelog-entry: Install data store images
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: >-
+        Revert "docker-disk: Add the host extension images to the data
+        partition"
+      hash: 3056dfbb91c160ade3474b0b3a5a2d34d84f38f5
+      body: >
+        This reverts commit cd44a94cf1646828832070417a2deb9236b0f5ee.
+
+
+        The preloaded hostapp extensions are no longer recorded in the read-only
+        rootfs
+
+        but on the apps.json file.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'Revert "resin-vars: Parse the HOSTEXT_IMAGES variable from config.json"'
+      hash: be71b5243ed7bfc233e153ca80ebed68876f1f0a
+      body: |
+        This reverts commit 761f517f955f829e12b2c7f0a0f88830ded39e13.
+
+        The hostapp extension information will no longer be added to config.json
+        but to apps.json so that it can be managed by the supervisor.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.77.0
+  date: 2021-05-03T09:36:11.966Z
+- commits:
     - subject: 'kernel: Always include overlayfs support'
       hash: ddb5dff6b146dfc252aeecede59ad3acc79683f7
       body: >
