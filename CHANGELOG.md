@@ -1,51 +1,10 @@
 Change log
 -----------
 
-# v2.76.0
-## (2021-04-30)
-
-* kernel: Always include overlayfs support [Robert Günzler]
-
-# v2.75.1
-## (2021-04-29)
-
-* grub: grub-efi: buildin gzio for gz compressed kernels [Joseph Kogut]
-
-# v2.75.0
-## (2021-04-22)
-
-* Update mobynit to the new multi-container hostOS specification [Alex Gonzalez]
-
-# v2.74.0
-## (2021-04-20)
-
-* balena-engine: Update to 19.03.18 [Robert Günzler]
-
-# v2.73.15
-## (2021-04-20)
-
-* modemmanager:u-blox-switch: Rework the u-blox modem switch to ECM mode [Florin Sarbu]
-
-# v2.73.14
-## (2021-04-19)
-
-* device-progress: do not force an exit code [Matthew McGinn]
-
-# v2.73.13
-## (2021-04-19)
-
-* add retries to status check [rcooke-warwick]
-
-# v2.73.12
-## (2021-04-16)
-
-* meta-balena: rename resin-vars to balena-config-vars [Mark Corbin]
-
 # v2.73.11
-## (2021-04-16)
+## (2021-05-04)
 
-* patch: Add strict bootcount count condition [Vipul Gupta (@vipulgupta2048)]
-* patch: Reactivate Persistent Logging test [Vipul Gupta (@vipulgupta2048)]
+* meta-balena-common: bump go version to 1.14.12 [Joseph Kogut]
 
 # v2.73.10
 ## (2021-04-14)
