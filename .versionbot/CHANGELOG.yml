@@ -1,4 +1,22 @@
 - commits:
+    - subject: 'meta-balena-common: bump go version to 1.14.12'
+      hash: bf2a20db8cb1b1da41b955a2f781030f8822855e
+      body: |
+        Bump the GOVERSION from 1.12.17 -> 1.14.12
+
+        This shaves off approximately:
+        balena-engine 41M -> 38M
+        init (mobynit) 9.5M -> 9.2M
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+        signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+      author: Joseph Kogut
+      nested: []
+  version: 2.73.11
+  date: 2021-05-04T23:57:11.807Z
+- commits:
     - subject: 'repo.yml: Move balena-supervisor reference to balena-os'
       hash: 7d9433e3c41c37ba3d9cea51d894b520be81d899
       body: |

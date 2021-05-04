@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.11
+## (2021-05-04)
+
+* meta-balena-common: bump go version to 1.14.12 [Joseph Kogut]
+
 # v2.73.10
 ## (2021-04-14)
 
