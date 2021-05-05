@@ -1,6 +1,16 @@
 Change log
 -----------
 
+# v2.77.0
+## (2021-05-05)
+
+* resin-mounts: mount EFI partition if it is disctinct from boot [Michal Toman]
+* resindataexpander: also resize LUKS volume if necessary [Michal Toman]
+* resin_update_state_probe: do not skip device mapper devices [Michal Toman]
+* grub.cfg_internal_template: Unlock and use encrypted partitions [Michal Toman]
+* resin-init-flasher: Add support for opt-in full disk encryption [Michal Toman]
+* grub update hook: move variables from grub.cfg to grubenv [Michal Toman]
+
 # v2.76.0
 ## (2021-04-30)
 

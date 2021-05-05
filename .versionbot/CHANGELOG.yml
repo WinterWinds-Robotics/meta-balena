@@ -1,4 +1,84 @@
 - commits:
+    - subject: 'resin-mounts: mount EFI partition if it is disctinct from boot'
+      hash: 859535980fe3561e031297d4218c8083788bede1
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+    - subject: 'resindataexpander: also resize LUKS volume if necessary'
+      hash: 0fc410c66b75c808baabae4049ac732e1046e03c
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+    - subject: 'resin_update_state_probe: do not skip device mapper devices'
+      hash: 100add93048e6e797e01bc6683bb76ca6aa81028
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+    - subject: 'grub.cfg_internal_template: Unlock and use encrypted partitions'
+      hash: fd953a8ca98eac26dac5819edfeb7b68b0736c87
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+    - subject: 'resin-init-flasher: Add support for opt-in full disk encryption'
+      hash: 61c52dbdb908bf58d3894ad75925f5a9208be526
+      body: |
+        If resin-init-flasher.conf has LUKS=1 flasher will:
+        - Add extra 2MB to each partition for the LUKS header
+        - Split resin-boot into EFI and linux boot
+        - LUKS-format the partitions, copy image contents after unlocking
+        - Propagate signatures for secure boot
+        - Use LUKS_PASSWORD or default "balenabeta" as passphrase
+
+        Missing:
+        - Progress report
+        - Random password with TPM2
+        - Read partition sizes prior to repartitioning, they are hardcoded now
+
+        The default behavior (LUKS undefined) is unchanged
+      footer:
+        Change-Type: minor
+        change-type: minor
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+    - subject: 'grub update hook: move variables from grub.cfg to grubenv'
+      hash: 76c82dd987215982dbfcbdf950588dafdc4c129e
+      body: |
+        In order to verify GPG signature of grub.cfg it must be immutable.
+        All the variables should be stored in grubenv file. This means
+        bootcount, resin_root_part and upgrade_available variables need
+        to be moved to grubenv.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 2.77.0
+  date: 2021-05-05T15:18:51.241Z
+- commits:
     - subject: 'kernel: Always include overlayfs support'
       hash: ddb5dff6b146dfc252aeecede59ad3acc79683f7
       body: >
