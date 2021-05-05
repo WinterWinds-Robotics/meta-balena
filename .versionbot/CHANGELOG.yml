@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update os-config from v1.2.0 to v1.2.1
+      hash: cd1df6da55f1baa7bb6fa8a14911d767cadb8673
+      body: |
+        Includes rename of resin-supervisor to balena-supervisor.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Change container name to balena_supervisor
+      hash: 61e6eb8fb20600cd1d0b8059411d61682396501c
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Rename resin-supervisor to balena-supervisor
+      hash: eb488c51edbec20cbda04c6edf2a7c2bb273ff22
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.77.0
+  date: 2021-05-05T12:13:03.256Z
+- commits:
     - subject: 'kernel: Always include overlayfs support'
       hash: ddb5dff6b146dfc252aeecede59ad3acc79683f7
       body: >

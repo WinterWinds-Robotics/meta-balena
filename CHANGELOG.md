@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.77.0
+## (2021-05-05)
+
+* Update os-config from v1.2.0 to v1.2.1 [Kyle Harding]
+* Change container name to balena_supervisor [Kyle Harding]
+* Rename resin-supervisor to balena-supervisor [Kyle Harding]
+
 # v2.76.0
 ## (2021-04-30)
 
