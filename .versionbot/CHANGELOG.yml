@@ -1,4 +1,35 @@
 - commits:
+    - subject: 'balena-engine: refactor systemd service'
+      hash: a44f65563b421a2510fee8b68613e83b85ace061
+      body: >
+        This makes it easier to overwrite the arguments passed in the engine
+
+        unit from drop-in overwrites. See the development image drop-in unit for
+
+        reference.
+
+
+        Using `systemctl edit --runtime balena.service`, which puts those
+
+        overwrites into `/run/systemd/system/balena.service.d/`, it would be
+
+        possible to modify the runtime behavior of the engine without remounting
+
+        the rootfs to be writeable.
+
+
+        See
+        https://www.freedesktop.org/software/systemd/man/systemd.unit.html#System%20Unit%20Search%20Path
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Robert Günzler <robertg@balena.io>
+        signed-off-by: Robert Günzler <robertg@balena.io>
+      author: Robert Günzler
+      nested: []
+  version: 2.76.1
+  date: 2021-05-05T15:24:04.138Z
+- commits:
     - subject: 'kernel: Always include overlayfs support'
       hash: ddb5dff6b146dfc252aeecede59ad3acc79683f7
       body: >
