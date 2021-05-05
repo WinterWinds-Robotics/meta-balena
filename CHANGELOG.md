@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.76.1
+## (2021-05-05)
+
+* balena-engine: refactor systemd service [Robert Günzler]
+
 # v2.76.0
 ## (2021-04-30)
 
