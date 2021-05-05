@@ -21,7 +21,7 @@ do_run_engine() {
         return
     fi
     # Make sure newuidmap/newgidmap are used from the host tools as they need to be setuid'ed
-    exec env PATH="${HOSTTOOLS_DIR}:${PATH}" XDG_RUNTIME_DIR=${ENGINE_DIR} balenad-rootless.sh --experimental --pidfile ${ENGINE_PIDFILE} -H ${DOCKER_HOST} --exec-root ${ENGINE_EXEC_ROOT} --data-root ${ENGINE_DATA_ROOT} > ${WORKDIR}/temp/log.balenad-rootless-run-${BB_CURRENTTASK} 2>&1 &
+    exec env PATH="${HOSTTOOLS_DIR}:${PATH}" XDG_RUNTIME_DIR=${ENGINE_DIR} balenad-rootless.sh --experimental --pidfile ${ENGINE_PIDFILE} -H ${DOCKER_HOST} --exec-root ${ENGINE_EXEC_ROOT} --data-root ${ENGINE_DATA_ROOT}  &
     #exec env PATH="${HOSTTOOLS_DIR}:${PATH}" XDG_RUNTIME_DIR=${ENGINE_DIR} balenad-rootless.sh --experimental --pidfile ${ENGINE_PIDFILE} -H ${DOCKER_HOST} --exec-root ${ENGINE_EXEC_ROOT} > ${WORKDIR}/temp/log.balenad-rootless-run-${BB_CURRENTTASK} 2>&1 &
     . "${STAGING_DIR_NATIVE}/usr/libexec/balena-docker.inc"
     balena_docker_wait "${DOCKER_HOST}" "balena" > ${WORKDIR}/temp/log.balenad-rootless-wait-${BB_CURRENTTASK} 2>&1
@@ -30,7 +30,7 @@ do_run_engine() {
 do_stop_engine() {
     set -x
     . "${STAGING_DIR_NATIVE}/usr/libexec/balena-docker.inc"
-    balena_docker_stop fail "${ENGINE_PIDFILE}" "${ENGINE_NAME}" > ${WORKDIR}/temp/log.balenad-rootless-stop-${BB_CURRENTTASK} 2>&1
+    balena_docker_stop fail "${ENGINE_PIDFILE}" "${ENGINE_NAME}"
     rm -rf ${ENGINE_DIR}
 }
 
