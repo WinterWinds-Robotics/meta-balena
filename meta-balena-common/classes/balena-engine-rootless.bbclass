@@ -1,17 +1,17 @@
 DEPENDS += "balena-native slirp4netns-native os-helpers-native rootlesskit-native"
 
 # Need a short path here as unix sockets paths have a maximum length of 104 characters
-ENGINE_DIR = "/tmp/${PN}"
+ENGINE_DIR ?= "${TOPDIR}/${PN}"
+# Make sure these are on a real ext4 filesystem and not inside a container filesystem
+# Socket is created in exec-root so path must be short
+ENGINE_EXEC_ROOT="${ENGINE_DIR}/${BB_CURRENTTASK}-root"
+ENGINE_DATA_ROOT="${ENGINE_DIR}/${BB_CURRENTTASK}-data"
 ENGINE_SOCK = "${ENGINE_DIR}/balena.sock"
 DOCKER_HOST = "unix://${ENGINE_SOCK}"
 ENGINE_PIDFILE = "${WORKDIR}/balena-engine.pid"
 ENGINE_CLIENT_NAME = "balena"
 ENGINE_NAME = "balenad"
 ENGINE_CLIENT = "env DOCKER_HOST=${DOCKER_HOST} ${ENGINE_CLIENT_NAME}"
-# Make sure these are on a real ext4 filesystem and not inside a container filesystem
-# Socket is created in exec-root so path must be short
-ENGINE_EXEC_ROOT="${ENGINE_DIR}/${BB_CURRENTTASK}-root"
-ENGINE_DATA_ROOT="${ENGINE_DIR}/${BB_CURRENTTASK}-data"
 
 do_run_engine() {
     set -x
@@ -22,6 +22,7 @@ do_run_engine() {
     fi
     # Make sure newuidmap/newgidmap are used from the host tools as they need to be setuid'ed
     exec env PATH="${HOSTTOOLS_DIR}:${PATH}" XDG_RUNTIME_DIR=${ENGINE_DIR} balenad-rootless.sh --experimental --pidfile ${ENGINE_PIDFILE} -H ${DOCKER_HOST} --exec-root ${ENGINE_EXEC_ROOT} --data-root ${ENGINE_DATA_ROOT} > ${WORKDIR}/temp/log.balenad-rootless-run-${BB_CURRENTTASK} 2>&1 &
+    #exec env PATH="${HOSTTOOLS_DIR}:${PATH}" XDG_RUNTIME_DIR=${ENGINE_DIR} balenad-rootless.sh --experimental --pidfile ${ENGINE_PIDFILE} -H ${DOCKER_HOST} --exec-root ${ENGINE_EXEC_ROOT} > ${WORKDIR}/temp/log.balenad-rootless-run-${BB_CURRENTTASK} 2>&1 &
     . "${STAGING_DIR_NATIVE}/usr/libexec/balena-docker.inc"
     balena_docker_wait "${DOCKER_HOST}" "balena" > ${WORKDIR}/temp/log.balenad-rootless-wait-${BB_CURRENTTASK} 2>&1
 }
