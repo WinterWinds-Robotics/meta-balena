@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.76.1
+## (2021-05-05)
+
+* mkfs-hostapp-native: Replace docker with balena-engine [Alex Gonzalez]
+* image_types_balena: Replace docker with balena-engine [Alex Gonzalez]
+* docker-disk: Replace docker with balena-engine [Alex Gonzalez]
+* balena-os: Set docker provide to balena in distro settings [Alex Gonzalez]
+* rootlesskit: Add package [Alex Gonzalez]
+* libseccomp: Add library [Alex Gonzalez]
+* slirp4netns: Add recipe from meta-virtualization [Alex Gonzalez]
+* kernel-headers-test: Replace use of docker with balena-engine [Alex Gonzalez]
+* balena-engine-rootless: Add new class [Alex Gonzalez]
+* balena-git: Extend to native and package rootless script [Alex Gonzalez]
+* os-helpers: Add a os-helpers-engine package [Alex Gonzalez]
+
 # v2.76.0
 ## (2021-04-30)
 

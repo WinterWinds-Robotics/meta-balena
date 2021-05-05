@@ -1,4 +1,142 @@
 - commits:
+    - subject: 'mkfs-hostapp-native: Replace docker with balena-engine'
+      hash: 098c9e6d58c657de0d7fbb243b6a5f4545fbecd7
+      body: |
+        The build system is now using balena-engine instead of docker not to
+        have a dependency on the hostOS.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'image_types_balena: Replace docker with balena-engine'
+      hash: 073188942be3e8867d52026c1e7a27b8907f55d5
+      body: |
+        The build system is now using balena-engine instead of docker not to
+        have a dependency on the hostOS.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'docker-disk: Replace docker with balena-engine'
+      hash: 04c8cbc355448c16aec1e993c7d55a231b7ffbc2
+      body: |
+        The build system is now using balena-engine not to have a dependency on
+        the host's system.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'balena-os: Set docker provide to balena in distro settings'
+      hash: c43dc3102d784ebd0cfae8702ae40b364c5a32c4
+      body: |
+        We are now using balena-engine also in the build system.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'rootlesskit: Add package'
+      hash: b92a15f2bdfa2603ce17f967db8a46298ea8f2d4
+      body: |
+        This is a dependency to be able to use a native rootless balena-engine.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'libseccomp: Add library'
+      hash: 6c72b502fc6ce23ce98ac2c4608297eb530b2559
+      body: |
+        This is a dependency for slirp4netns which in turn is required to run a
+        native rootless balena-engine.
+
+        It comes from meta-security's dunfell branch at:
+        831f2d6451918f1cf77795c2cf5229d1e49f283f
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'slirp4netns: Add recipe from meta-virtualization'
+      hash: 9f94e4cbe694a5d1f6d81f539e6846f2317e4193
+      body: |
+        This is a requirement to run a native rootless balena-engine for the
+        build process.
+
+        It comes from meta-virtualization's dunfell branch:
+        89abc62b47f6f20db9d00a8ec9b2c1b6b60ac3f9
+
+        The recipe has been extended for native compilation.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'kernel-headers-test: Replace use of docker with balena-engine'
+      hash: b2ae59c2f66bde6abd97dbe28cc997775603efb3
+      body: |
+        This removes this recipe's dependency on the host's docker installation.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'balena-engine-rootless: Add new class'
+      hash: adfa5a20b162326e549198580953d77e48078a63
+      body: >
+        This new class will start the balena-engine to use in the recipe's
+        tasks.
+
+        In this way we will remove the dependency on the host's docker
+        installation.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'balena-git: Extend to native and package rootless script'
+      hash: 469d781a4b019672b5ae3be36ef4d0162a27dc9d
+      body: |
+        In order to use the engine in the Yocto build process and launch it in
+        rootless mode.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'os-helpers: Add a os-helpers-engine package'
+      hash: 0a07709d8d1194c041c188f11a295d89e6e49f65
+      body: |
+        This includes the balena-docker.inc script library. It also extends the
+        recipe to native so it can be built and included in the native sysroot
+        and be available to use in classes.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.76.1
+  date: 2021-05-05T19:20:27.510Z
+- commits:
     - subject: 'kernel: Always include overlayfs support'
       hash: ddb5dff6b146dfc252aeecede59ad3acc79683f7
       body: >
