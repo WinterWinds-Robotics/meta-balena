@@ -31,6 +31,7 @@ do_stop_engine() {
     set -x
     . "${STAGING_DIR_NATIVE}/usr/libexec/balena-docker.inc"
     balena_docker_stop fail "${ENGINE_PIDFILE}" "${ENGINE_NAME}" > ${WORKDIR}/temp/log.balenad-rootless-stop-${BB_CURRENTTASK} 2>&1
+    rm -rf ${ENGINE_DIR}
 }
 
 do_compile_prepend() {
